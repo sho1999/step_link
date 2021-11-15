@@ -2,20 +2,8 @@
   <% @students.each do |student| %>
     <%= link_to '削除', student_path(student.id), method: :delete %>
     <%= link_to '編集', edit_student_path(student.id), method: :get %>
+    <%= link_to '詳細', student_path(student.id), method: :get %>
     <p class="student_content">名前：<%= student.name %></p>
-    <p class="student_content">大学：<%= student.college_name %></p>
-    <p class="student_content">学年：<%= student.grade.name %></p>
-    <p class="student_content">学部名：<%= student.gakubu_name %></p>
-    <p class="student_content">学科名：<%= student.gakka_name %></p>
     <p class="student_content">一言：<%= student.one_word %></p>
-    <p class="student_content">サークル名：<%= student.circle_name %></p>
-    <p class="student_content">経験職種：<%= student.exp_occ %></p>
-    <p class="student_content">資格名：<%= student.qualification_name %></p>
-    <p class="student_content">インターン歴：<%= student.intern_history.name %></p>
-    <p class="student_content">卒業年：<%= student.graduation.name %></p>
-    <p class="student_content">住所：<%= student.prefecture.name %></p>
-    <p class="student_content">希望業界：<%= student.industry.name %>業界</p>
-    <p class="student_content">性別：<%= student.gender.name %></p>
-    <p class="student_content">売上高：<%= student.sales_amount %>円</p>
   <% end %>
 </div>

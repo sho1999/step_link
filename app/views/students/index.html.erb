@@ -1,5 +1,7 @@
 <div class="contents row">
   <% @students.each do |student| %>
+    <%= link_to '削除', student_path(student.id), method: :delete %>
+    <%= link_to '編集', edit_student_path(student.id), method: :get %>
     <p class="student_content">名前：<%= student.name %></p>
     <p class="student_content">大学：<%= student.college_name %></p>
     <p class="student_content">学年：<%= student.grade.name %></p>
@@ -15,6 +17,5 @@
     <p class="student_content">希望業界：<%= student.industry.name %>業界</p>
     <p class="student_content">性別：<%= student.gender.name %></p>
     <p class="student_content">売上高：<%= student.sales_amount %>円</p>
-
   <% end %>
 </div>

@@ -1,0 +1,24 @@
+<div class="contents row">
+  <div class="container">
+    <h3>登録する</h3>
+    <%= form_with(model: @student, local: true) do |f| %>
+      <%= f.text_field :name, placeholder: "ヤマダ タロウ" %>
+      <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.text_field :college_name, placeholder: "ステップ大学" %>
+      <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.text_field :gakubu_name, placeholder: "経営学部" %>
+      <%= f.text_field :gakka_name, placeholder: "マーケティング学科" %>
+      <%= f.text_field :circle_name, placeholder: "サークル名" %>
+      <%= f.collection_select(:graduation_id, Graduation.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.collection_select(:intern_history_id, InternHistory.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.text_field :exp_occ, placeholder: "営業, ライティング, webマーケティング" %>
+      <%= f.collection_select(:industry_id, Industry.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.text_field :sales_amount, placeholder: "30000000" %>
+      <%= f.collection_select(:grade_id, Grade.all, :id, :name, {}, {class:"new_f_id"}) %>
+      <%= f.text_field :qualification_name, placeholder: "TOEC：800点, ファイナンシャルプランナー" %>
+      <%= f.text_field :one_word, placeholder: "明るくポジティブです！" %>
+      <%= f.submit "SEND" %>
+    <% end %>
+  </div>
+</div>

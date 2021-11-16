@@ -1,3 +1,5 @@
+<div class="padding-block"></div>
+<%= link_to '学生情報を登録する', new_student_path, method: :get %>
 <div class="contents row">
   <% @students.each do |student| %>
     <%= link_to '削除', student_path(student.id), method: :delete %>

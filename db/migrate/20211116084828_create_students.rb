@@ -18,6 +18,9 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.integer :gender_id             , null: false
       t.integer :grade_id              , null: false 
       t.integer :sales_amount
+
+      t.references :student_user       , null: false, foreign_key: true
+
       t.timestamps
     end
   end

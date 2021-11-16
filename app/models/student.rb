@@ -6,6 +6,8 @@ class Student < ApplicationRecord
   belongs_to :graduation
   belongs_to :grade
   belongs_to :gender
+  belongs_to :student_user
+
 
   VALID_SALES_AMOUT_REGEX =/\A[0-9]*\z/
 

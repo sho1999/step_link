@@ -1,8 +1,10 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:edit, :show]
+  before_action :move_to_index, except: :index
+
 
   def index
-    @students = Student.all
+    @students = Student.includes(:student_user)
   end
 
   def new
@@ -32,11 +34,17 @@ class StudentsController < ApplicationController
   private
   def student_params
     params.require(:student).permit(:name, :college_name, :gakubu_name, :gakka_name, :one_word, :exp_occ, :circle_name, :qualification_name,
-                                    :intern_history_id, :graduation_id, :prefecture_id, :industry_id, :gender_id, :grade_id, :sales_amount)
+                                    :intern_history_id, :graduation_id, :prefecture_id, :industry_id, :gender_id, :grade_id, :sales_amount).merge(student_user_id: current_student_user.id)
   end
 
   def set_student
     @student = Student.find(params[:id])
+  end
+
+  def move_to_index
+    unless student_user_signed_in?
+      redirect_to action: :index
+    end
   end
 
 end

@@ -601,6 +601,9 @@ ul li {
   font-size: 10px;
 }
 
+.padding-block {
+  padding-top: 100px;
+}
 @media only screen and (max-width: 40em) {
 
   .row {

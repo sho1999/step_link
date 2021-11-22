@@ -26,4 +26,12 @@ class Student < ApplicationRecord
   end
   validates :sales_amount, format: { with: VALID_SALES_AMOUT_REGEX, message: "は半角数字で入力して下さい"}
 
+  def self.search(search)
+    if search != ""
+      Student.where('name LIKE(?)', "%#{search}%")
+    else
+      Student.all
+    end
+  end
+
 end

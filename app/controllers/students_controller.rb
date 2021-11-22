@@ -1,7 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:edit, :show]
-  before_action :move_to_index, except: :index
-
+  before_action :move_to_index, except: [:index, :search]
 
   def index
     @students = Student.includes(:student_user).order("created_at DESC")
@@ -29,6 +28,10 @@ class StudentsController < ApplicationController
   def destroy
     student = Student.find(params[:id])
     student.destroy
+  end
+
+  def search
+    @students = Student.search(params[:keyword])
   end
 
   private

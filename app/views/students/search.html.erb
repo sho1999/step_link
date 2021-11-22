@@ -1,11 +1,7 @@
-<div class="padding-block"></div>
-<%= link_to '学生情報を登録する', new_student_path, method: :get %>
-
 <%= form_with(url: search_students_path, local: true, method: :get, class: "search-form") do |form| %>
   <%= form.text_field :keyword, placeholder: "学生を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
-
 <div class="contents row">
   <% @students.each do |student| %>
     <% if student_user_signed_in? && current_student_user.id == Student.student_user_id %>

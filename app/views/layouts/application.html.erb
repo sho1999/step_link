@@ -15,7 +15,7 @@
         <h1 class="grid-6"><a href="/">PicTweet</a></h1>
         <% if student_user_signed_in? %>
           <div class="user_nav grid-6">
-            <span><%= current_student_user.student.name %>
+            <%# <span><%= current_student_user.student.name %> %>
               <ul class="user__info">
                 <li>
                   <%# <% if StudentUser.id == current_student_user.id %> %>
@@ -25,7 +25,9 @@
                 </li>
               </ul>
             </span>
-            <%= link_to "編集する", edit_student_user_registration_path, class: "post" %>
+            <% if student_user_signed_in? && current_student_user.id == Student.student_user_id %>
+              <%= link_to "編集する", edit_student_user_registration_path, class: "post" %>
+            <% end %>
           </div>
         <% else %>
           <div class="grid-6">

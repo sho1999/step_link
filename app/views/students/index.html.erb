@@ -2,8 +2,10 @@
 <%= link_to '学生情報を登録する', new_student_path, method: :get %>
 <div class="contents row">
   <% @students.each do |student| %>
-    <%= link_to '削除', student_path(student.id), method: :delete %>
-    <%= link_to '編集', edit_student_path(student.id), method: :get %>
+    <% if student_user_signed_in? && current_student_user.id == Student.student_user_id %>
+      <%= link_to '削除', student_path(student.id), method: :delete %>
+      <%= link_to '編集', edit_student_path(student.id), method: :get %>
+    <% end %>
     <%= link_to '詳細', student_path(student.id), method: :get %>
     <p class="student_content">名前：<%= student.name %></p>
     <p class="student_content">一言：<%= student.one_word %></p>

@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
 
 
   def index
-    @students = Student.includes(:student_user)
+    @students = Student.includes(:student_user).order("created_at DESC")
   end
 
   def new

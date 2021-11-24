@@ -32,10 +32,6 @@ class StudentsController < ApplicationController
   end
 
   def search
-    # @students = Student.search(params[:keyword])
-    # @search_params = student_user_search_params
-    # @students = User.search(@search_params)#.includes(:prefecture)
-
     @results = @p.result.includes(:student_user) 
   end
 
@@ -56,11 +52,6 @@ class StudentsController < ApplicationController
   end
 
   def search_student
-    @p = Student.ransack(params[:q])  # 検索オブジェクトを生成
+    @p = Student.ransack(params[:q])
   end
-
-  # def student_user_search_params
-  #   params.fetch(:search, {}).permit(:name, :gender_id)
-  # end
-
 end

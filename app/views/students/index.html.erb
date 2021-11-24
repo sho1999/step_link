@@ -18,7 +18,7 @@
 
 <div class="contents row">
   <% @students.each do |student| %>
-    <% if student_user_signed_in? && current_student_user.id == student.student_user_id %>
+    <% if student_user_signed_in? && current_student_user.id == 1 %>
       <%= link_to '削除', student_path(student.id), method: :delete %>
       <%= link_to '編集', edit_student_path(student.id), method: :get %>
     <% end %>

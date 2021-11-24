@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get '/'
+
   devise_for :student_users
   root to: 'students#index'
   get 'students/search'

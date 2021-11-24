@@ -1054,6 +1054,8 @@ footer p {
 .search-form {
   text-align: center;
   padding-top: 32px;
+  width: 50%;
+  margin: auto;
 }
 
 .search-form .search-input {
@@ -1064,3 +1066,4 @@ footer p {
 .search-form .search-btn {
   width: 10%;
 }
+

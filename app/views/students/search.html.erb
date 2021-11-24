@@ -1,15 +1,17 @@
-<%= form_with(url: search_students_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "学生を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
+<div class="padding-block"></div>
+
 <div class="contents row">
-  <% @students.each do |student| %>
-    <% if student_user_signed_in? && current_student_user.id == Student.student_user_id %>
-      <%= link_to '削除', student_path(student.id), method: :delete %>
-      <%= link_to '編集', edit_student_path(student.id), method: :get %>
+  <% if @results.length !=0 %>
+    <% @results.each do |student| %>
+      <%# if student_user_signed_in? && current_student_user.id == Student.student_user_id %>
+        <%= link_to '削除', student_path(student.id), method: :delete %>
+        <%= link_to '編集', edit_student_path(student.id), method: :get %>
+      <%# end %>
+      <%= link_to '詳細', student_path(student.id), method: :get %>
+      <p class="student_content">名前：<%= student.name %></p>
+      <p class="student_content">一言：<%= student.one_word %></p>
     <% end %>
-    <%= link_to '詳細', student_path(student.id), method: :get %>
-    <p class="student_content">名前：<%= student.name %></p>
-    <p class="student_content">一言：<%= student.one_word %></p>
+    <% else %>
+      該当する学生はいません  
   <% end %>
 </div>

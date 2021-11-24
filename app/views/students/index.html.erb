@@ -1,14 +1,24 @@
 <div class="padding-block"></div>
 <%= link_to '学生情報を登録する', new_student_path, method: :get %>
 
-<%= form_with(url: search_students_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "学生を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
+<div class="search-form">
+  <%= search_form_for @p, url: students_search_path do |f| %>
+    <%= f.label :gender_id_eq, '性別' %>
+    <%= f.collection_select :gender_id_eq, Gender.all, :id, :name, include_blank: '指定なし' %>
+    <%= f.label :graduation_id_eq, '卒業年' %>
+    <%= f.collection_select :graduation_id_eq, Graduation.all, :id, :name, include_blank: '指定なし' %>
+    <%= f.label :intern_history_id_eq, '勤続年数' %>
+    <%= f.collection_select :intern_history_id_eq, InternHistory.all, :id, :name, include_blank: '指定なし' %>
+    <%= f.label :industry_id_eq, '志望業界' %>
+    <%= f.collection_select :industry_id_eq, Industry.all, :id, :name, include_blank: '指定なし' %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+
 
 <div class="contents row">
   <% @students.each do |student| %>
-    <% if student_user_signed_in? && current_student_user.id == Student.student_user_id %>
+    <% if student_user_signed_in? && current_student_user.id == student.student_user_id %>
       <%= link_to '削除', student_path(student.id), method: :delete %>
       <%= link_to '編集', edit_student_path(student.id), method: :get %>
     <% end %>

@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :search]
+  before_action :search_student, only: [:index, :search]
 
   def index
     @students = Student.includes(:student_user).order("created_at DESC")
@@ -31,7 +32,11 @@ class StudentsController < ApplicationController
   end
 
   def search
-    @students = Student.search(params[:keyword])
+    # @students = Student.search(params[:keyword])
+    # @search_params = student_user_search_params
+    # @students = User.search(@search_params)#.includes(:prefecture)
+
+    @results = @p.result.includes(:student_user) 
   end
 
   private
@@ -49,5 +54,13 @@ class StudentsController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  def search_student
+    @p = Student.ransack(params[:q])  # 検索オブジェクトを生成
+  end
+
+  # def student_user_search_params
+  #   params.fetch(:search, {}).permit(:name, :gender_id)
+  # end
 
 end

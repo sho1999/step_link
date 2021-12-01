@@ -1,4 +1,9 @@
+<div class="padding-block"></div>
+
 <div class="contents row">
+  <%= link_to '削除', student_path(@student.id), method: :delete %>
+  <%= link_to '編集', edit_student_path(@student.id), method: :get %>
+  <h3>このページは仮のマイページです</h3>
   <p class="student_content">名前：<%= @student.name %></p>
   <p class="student_content">大学：<%= @student.college_name %></p>
   <p class="student_content">学年：<%= @student.grade.name %></p>

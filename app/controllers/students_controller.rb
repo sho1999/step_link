@@ -48,6 +48,7 @@ class StudentsController < ApplicationController
   def move_to_index
     unless student_user_signed_in?
       redirect_to action: :index
+      flash[:alert] = "ログイン/新規登録をして下さい"
     end
   end
 

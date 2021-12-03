@@ -1,4 +1,9 @@
 <div class="padding-block"></div>
+<div class="page-heading">
+  <p>学生一覧ページ</p>
+  <p class="text-alert" id="alert"><%= alert %></p>
+</div>
+
 
 <div class="search-form">
   <%= search_form_for @p, url: students_search_path do |f| %>

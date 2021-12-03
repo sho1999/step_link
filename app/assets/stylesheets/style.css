@@ -604,6 +604,15 @@ ul li {
 .padding-block {
   padding-top: 100px;
 }
+
+.page-heading {
+  text-align: center;
+}
+
+.text-alert{
+  color: red;
+}
+
 @media only screen and (max-width: 40em) {
 
   .row {

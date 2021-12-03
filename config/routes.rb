@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :corp_users
   devise_for :student_users
   root to: 'students#index'
   get 'students/search'

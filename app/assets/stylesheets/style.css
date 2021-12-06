@@ -613,6 +613,11 @@ ul li {
   color: red;
 }
 
+.display-flex{
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 40em) {
 
   .row {

@@ -11,20 +11,37 @@
     <header class="header">
       <div class="header__bar row">
         <h1 class="grid-6"><a href="/">StepLink</a></h1>
-        <% if student_user_signed_in? %>
-        
+        <% if student_user_signed_in? || corp_user_signed_in? %>
           <div class="user_nav grid-6">
-          <% unless current_student_user.student.nil? %>
-            <%= link_to "マイページ", "/student_users/#{current_student_user.id}", class: "post" %>
+          <% if student_user_signed_in? %>
+            <% unless current_student_user.student.nil? %>
+              <%= link_to "マイページ", "/student_users/#{current_student_user.id}", class: "post" %>
+            <% else %>
+                <%= link_to "学生登録", new_student_path, class: "post" %>
+            <% end %>
+              <%= link_to "ログアウト", destroy_student_user_session_path, class: "post", method: :delete %>
           <% else %>
-              <%= link_to "学生登録", new_student_path, class: "post" %>
+              <%= link_to "マイページ", "/corp_users/#{current_corp_user.id}", class: "post" %>
+              <%= link_to "ログアウト", destroy_corp_user_session_path, class: "post", method: :delete %>
           <% end %>
-            <%= link_to "ログアウト", destroy_student_user_session_path, class: "post", method: :delete %>
           </div>
         <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_student_user_session_path, class: "post" %>
-            <%= link_to "新規登録", new_student_user_registration_path, class: "post" %>
+          <div class="user_nav grid-6 display-flex">
+            <span> 学生の方 
+              <ul class="user__info">
+                <li>
+                  <%= link_to "ログイン", new_student_user_session_path, class: "post" %>
+                  <%= link_to "新規登録", new_student_user_registration_path, class: "post" %>
+                </li>
+              </ul>
+            </span>
+            <span>企業の方
+            <ul class="user__info">
+              <li>
+                <%= link_to "ログイン", new_corp_user_session_path, class: "post" %>
+                <%= link_to "新規登録", new_corp_user_registration_path, class: "post" %>
+              </li>
+            </ul>
           </div>
         <% end %>
       </div>
@@ -33,3 +50,28 @@
   </body>
 </html>
 
+
+
+<% 
+=begin
+%>
+
+<% if student_user_signed_in? %>
+  <div class="user_nav grid-6">
+  <% unless current_student_user.student.nil? %>
+    <%= link_to "マイページ", "/student_users/#{current_student_user.id}", class: "post" %>
+  <% else %>
+      <%= link_to "学生登録", new_student_path, class: "post" %>
+  <% end %>
+    <%= link_to "ログアウト", destroy_student_user_session_path, class: "post", method: :delete %>
+  </div>
+<% else %>
+  <div class="grid-6">
+    <%= link_to "ログイン", new_student_user_session_path, class: "post" %>
+    <%= link_to "新規登録", new_student_user_registration_path, class: "post" %>
+  </div>
+<% end %>
+
+<%
+=end
+%>

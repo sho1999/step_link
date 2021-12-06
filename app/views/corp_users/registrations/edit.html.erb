@@ -4,6 +4,36 @@
   <%= render "corp_users/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
+    <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :corp_name, '会社名'%><br />
+    <%= f.text_field :corp_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location, '勤務地' %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :staff_msg, 'スタッフからの一言' %><br />
+    <%= f.text_area	 :staff_msg %>
+  </div>
+
+  <div class="field">
+  <%= f.label :industry_id, '業界' %>
+  <%= f.collection_select(:industry_id, Industry.all, :id, :name, {include_blank: '指定なし'}, {class:"new_f_id"}) %>
+  </div>
+
+  <div class="field">
+  <%= f.label :feature_id, '会社の特徴' %>
+  <%= f.collection_select(:feature_id, Feature.all, :id, :name, {include_blank: '指定なし'}, {class:"new_f_id"}) %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -27,12 +57,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(変更するには、パスワードが必要です。)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "変更する" %>
   </div>
 <% end %>
 

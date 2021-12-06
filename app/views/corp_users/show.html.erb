@@ -1,8 +1,9 @@
 <div class="padding-block"></div>
 
 <div class="contents row">
-  <%#= link_to '削除', student_path(@corp_user.id), method: :delete %>
-  <%#= link_to '編集', edit_student_path(@corp_user.id), method: :get %>
+  <%= link_to 'ログアウト', destroy_corp_user_session_path, method: :delete %>
+  <%= link_to '編集', edit_corp_user_registration_path, method: :get %>
+  <%= link_to 'アカウント削除', corp_user_registration_path, method: :delete %>
   <h3>このページは仮のマイページです</h3>
   <p class="student_content">担当者：<%= @corp_user.nickname %></p>
   <p class="student_content">会社名：<%= @corp_user.corp_name %></p>

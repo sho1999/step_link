@@ -5,13 +5,13 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
-        <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
+        <%= f.label :nickname, '担当者名' %> <br />
+        <%= f.text_field :nickname, autofocus: true, autocomplete: "off" %>
       </div>
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email %>
+        <%= f.email_field :email, autocomplete: "off" %>
       </div>
 
       <div class="field">
@@ -29,17 +29,17 @@
 
       <div class="field">
         <%= f.label :corp_name, '会社名'%><br />
-        <%= f.text_field :corp_name %>
+        <%= f.text_field :corp_name, autocomplete: "off" %>
       </div>
 
       <div class="field">
         <%= f.label :location, '勤務地' %><br />
-        <%= f.text_field :location %>
+        <%= f.text_field :location, autocomplete: "off" %>
       </div>
 
       <div class="field">
         <%= f.label :staff_msg, 'スタッフからの一言' %><br />
-        <%= f.text_area	 :staff_msg %>
+        <%= f.text_area	 :staff_msg, autocomplete: "off" %>
       </div>
 
       <div class="field">

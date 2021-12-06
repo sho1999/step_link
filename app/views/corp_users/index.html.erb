@@ -1,9 +1,20 @@
 <div class="padding-block"></div>
 <div class="page-heading">
-  <p>学生一覧ページ</p><%= link_to '企業一覧へ', corp_users_path %>
+  <p>企業一覧ページ</p><%= link_to '学生一覧へ', students_path %>
   <p class="text-alert" id="alert"><%= alert %></p>
 </div>
 
+<div class="contents row">
+  <% @corp_user.each do |corp_user| %>
+    <%= link_to '詳細', corp_user_path(corp_user.id) %>
+    <p class="student_content">名前：<%= corp_user.corp_name %></p>
+    <p class="student_content">一言：<%= corp_user.feature.name %></p>
+  <% end %>
+</div>
+
+<% 
+=begin
+%>
 <div class="search-form">
   <%= search_form_for @p, url: students_search_path do |f| %>
     <%= f.label :gender_id_eq, '性別' %>
@@ -18,15 +29,6 @@
   <% end %>
 </div>
 
-
-<div class="contents row">
-  <% @students.each do |student| %>
-    <% if student_user_signed_in? && current_student_user.id == 1 %>
-      <%= link_to '削除', student_path(student.id), method: :delete %>
-      <%= link_to '編集', edit_student_path(student.id), method: :get %>
-    <% end %>
-    <%= link_to '詳細', student_path(student.id), method: :get %>
-    <p class="student_content">名前：<%= student.name %></p>
-    <p class="student_content">一言：<%= student.one_word %></p>
-  <% end %>
-</div>
+<%
+=end
+%>

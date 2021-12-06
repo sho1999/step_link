@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :student_users, only: :show
   devise_for :corp_users
   resources :students
-  resources :corp_users, only: :show
+  resources :corp_users, only: [:show, :index]
 
   root to: 'students#index'
   get 'students/search'

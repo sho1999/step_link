@@ -1,0 +1,13 @@
+<div class="padding-block"></div>
+
+<div class="contents row">
+  <%#= link_to '削除', student_path(@corp_user.id), method: :delete %>
+  <%#= link_to '編集', edit_student_path(@corp_user.id), method: :get %>
+  <h3>このページは仮のマイページです</h3>
+  <p class="student_content">担当者：<%= @corp_user.nickname %></p>
+  <p class="student_content">会社名：<%= @corp_user.corp_name %></p>
+  <p class="student_content">所在地：<%= @corp_user.location %></p>
+  <p class="student_content">業界名：<%= @corp_user.industry.name %>業界</p>
+  <p class="student_content">特徴：<%= @corp_user.feature.name %></p>
+  <p class="student_content">会社から一言：<%= @corp_user.staff_msg %></p>
+</div>

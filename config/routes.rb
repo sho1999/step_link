@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :student_users, only: :show
 
   devise_for :corp_users
-  resources :corp_users, only: :index
+  resources :corp_users, only: :show
 end

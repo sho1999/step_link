@@ -16,4 +16,5 @@ class Industry < ActiveHash::Base
   ]
   include ActiveHash::Associations
   has_many :students
+  has_many :corp_user
 end

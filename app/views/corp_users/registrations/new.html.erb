@@ -1,0 +1,60 @@
+<div class="contents row">
+  <div class="container">
+    <h2>Sign up</h2>
+    <%= form_with model: @corp_user, url: corp_user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
+        <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :corp_name %><br />
+        <%= f.text_field :corp_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :location, '勤務地' %><br />
+        <%= f.text_field :location %>
+      </div>
+
+      <div class="field">
+        <%= f.label :staff_msg, 'スタッフからの一言' %><br />
+        <%= f.text_area	 :staff_msg %>
+      </div>
+
+      <div class="field">
+      <%= f.label :industry_id, '業界' %>
+      <%= f.collection_select(:industry_id, Industry.all, :id, :name, {include_blank: '指定なし'}, {class:"new_f_id"}) %>
+      </div>
+
+      <div class="field">
+      <%= f.label :feature_id, '会社の特徴' %>
+      <%= f.collection_select(:feature_id, Feature.all, :id, :name, {include_blank: '指定なし'}, {class:"new_f_id"}) %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+  </div>
+</div>

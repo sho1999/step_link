@@ -1,0 +1,2 @@
+module CorpUsersHelper
+end

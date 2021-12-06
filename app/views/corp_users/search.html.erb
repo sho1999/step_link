@@ -1,0 +1,13 @@
+<div class="padding-block"></div>
+
+<div class="contents row">
+  <% if @results.length !=0 %>
+    <% @results.each do |corp_user| %>
+      <%= link_to '詳細', corp_user_path(corp_user.id), method: :get %>
+      <p class="student_content">会社名：<%= corp_user.corp_name %></p>
+      <p class="student_content">一言：<%= corp_user.staff_msg %></p>
+    <% end %>
+    <% else %>
+      該当する会社はありません  
+  <% end %>
+</div>
